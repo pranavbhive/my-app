@@ -127,6 +127,7 @@
 import { useState } from 'react';
 import Script from 'next/script';
 
+
 const LoginPage = () => {
   const [userId, setUserId] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -138,17 +139,22 @@ const LoginPage = () => {
     // If the login is successful, you can then track the user with WebEngage:
     console.log('handleLogin is called');
     webengage.user.login(userId);
-    if (window.webengage) {
-      console.log('handleLogin is called2222');
+    webengage.user.setAttribute({
+          'we_first_name': firstName,
+          'we_last_name':lastName ,
+          'we_email': email,
+        });
+    // if (window.webengage) {
+    //   console.log('handleLogin is called2222');
 
-      window.webengage.user.setAttribute({
-        'we_first_name': firstName,
-        'we_last_name':lastName ,
-        'we_email': email,
-      });
+    //   window.webengage.user.setAttribute({
+    //     'we_first_name': firstName,
+    //     'we_last_name':lastName ,
+    //     'we_email': email,
+    //   });
 
-      console.log("aitu guru")
-    }
+    //   console.log("aitu guru")
+    // }
   };
 
   return (
